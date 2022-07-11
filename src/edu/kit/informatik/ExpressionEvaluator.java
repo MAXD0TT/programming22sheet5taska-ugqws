@@ -15,7 +15,8 @@ public class ExpressionEvaluator {
     private static Stack<ComplexNumber> numbers;
     private static Stack<Character> operators;
 
-    public static ComplexNumber evaluate(String rawExpression) throws InvalidNumberException, InvalidExpressionException {
+    public static ComplexNumber evaluate(String rawExpression)
+            throws InvalidNumberException, InvalidExpressionException {
 
         char[] tokens = rawExpression.toCharArray();
         numbers = new Stack<>();
