@@ -6,6 +6,9 @@ import edu.kit.informatik.exceptions.InvalidNumberException;
 import java.util.Random;
 import java.util.Stack;
 
+/**
+ * The type Expression evaluator.
+ */
 public class ExpressionEvaluator {
 
     private static Random randomLongGenerator;
@@ -17,6 +20,14 @@ public class ExpressionEvaluator {
 
     private ExpressionEvaluator() { }
 
+    /**
+     * Evaluate complex number.
+     *
+     * @param rawExpression the raw expression
+     * @return the complex number
+     * @throws InvalidNumberException     the invalid number exception
+     * @throws InvalidExpressionException the invalid expression exception
+     */
     public static ComplexNumber evaluate(String rawExpression)
             throws InvalidNumberException, InvalidExpressionException {
 
@@ -24,9 +35,10 @@ public class ExpressionEvaluator {
         numbers = new Stack<>();
         operators = new Stack<>();
 
+        //add every token to the corresponding stack
         for (int i = 0; i < tokens.length; i++) {
 
-
+            //try to parse string between the round brackets
             if (tokens[i] == '(') {
                 boolean foundClosingBracket = false;
                 for (int j = i; j < tokens.length; j++) {
@@ -40,19 +52,27 @@ public class ExpressionEvaluator {
                 if (!foundClosingBracket) {
                     throw new InvalidNumberException("Error, no closing brackets found for complex number");
                 }
-            } else if (tokens[i] == '[') {
+            }
+            //add [ to operator stack
+            else if (tokens[i] == '[') {
                 operators.push(tokens[i]);
-            } else if (tokens[i] == ']') {
+            }
+            //evaluate the expression in the brackets and add it to the numbers stack
+            else if (tokens[i] == ']') {
                 while (operators.peek() != '[') {
                     calculateNext();
                 }
                 operators.pop();
-            } else if (OPERATOR_SYMBOLS.contains(String.valueOf(tokens[i]))) {
+            }
+            // add operator and calculate
+            else if (OPERATOR_SYMBOLS.contains(String.valueOf(tokens[i]))) {
                 while (!operators.empty() && Operator.precedence(tokens[i], operators.peek())) {
                     calculateNext();
                 }
                 operators.push(tokens[i]);
-            } else {
+            }
+            // illegal symbol in expression
+            else {
                 throw new InvalidExpressionException("Error, unrecognized symbol in expression on index: " + i + ".");
             }
         }
@@ -79,10 +99,20 @@ public class ExpressionEvaluator {
         }
     }
 
+    /**
+     * Sets random long generator.
+     *
+     * @param randomLongGenerator the random long generator
+     */
     public static void setRandomLongGenerator(Random randomLongGenerator) {
         ExpressionEvaluator.randomLongGenerator = randomLongGenerator;
     }
 
+    /**
+     * Get the next random long.
+     *
+     * @return the random long
+     */
     public static Long getRandomLong() {
         return randomLongGenerator.nextLong();
     }
