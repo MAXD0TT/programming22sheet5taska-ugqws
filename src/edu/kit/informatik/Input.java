@@ -21,14 +21,14 @@ public class Input {
     /**
      * The entry point of application.
      *
-     * @param args the input arguments unused
+     * @param args the input arguments
      */
     public static void main(String[] args) {
         running = true;
         Scanner scanner = new Scanner(System.in);
         Long seed;
         try {
-            seed = Long.parseLong(scanner.nextLine());
+            seed = Long.parseLong(args[0]);
         } catch (NumberFormatException numberFormatException) {
             seed = 1L;
         }
