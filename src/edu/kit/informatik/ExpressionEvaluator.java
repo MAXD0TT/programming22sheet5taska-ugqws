@@ -76,9 +76,9 @@ public class ExpressionEvaluator {
                 throw new InvalidExpressionException("Error, unrecognized symbol in expression on index: " + i + ".");
             }
         }
-
+        //evaluate all remaining operators
         calculateRemaining();
-
+        //return the last remaining number, which is the solution
         return numbers.pop();
     }
 
