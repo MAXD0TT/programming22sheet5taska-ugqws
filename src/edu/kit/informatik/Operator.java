@@ -56,13 +56,17 @@ public enum Operator {
      * @throws InvalidExpressionException the invalid expression exception if z2 is zero for the division
      */
     public ComplexNumber evaluate(ComplexNumber z1, ComplexNumber z2) throws InvalidExpressionException {
-        return switch (this) {
-            case ADD -> ComplexNumber.add(z1, z2);
-            case SUBTRACT -> ComplexNumber.subtract(z1, z2);
-            case MULTIPLY -> ComplexNumber.multiply(z1, z2);
-            case DIVIDE -> ComplexNumber.divide(z1, z2);
-        };
-        // testing for valid operators already done.
+        switch (this) {
+            case ADD:
+                return ComplexNumber.add(z1, z2);
+            case SUBTRACT:
+                return ComplexNumber.subtract(z1, z2);
+            case MULTIPLY:
+                return ComplexNumber.multiply(z1, z2);
+            case DIVIDE:
+                return ComplexNumber.divide(z1, z2);
+        }
+        return null; // testing for valid operators already done.
     }
 
     /**
