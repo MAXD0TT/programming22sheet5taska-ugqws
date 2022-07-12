@@ -4,7 +4,7 @@ import edu.kit.informatik.exceptions.InvalidExpressionException;
 import edu.kit.informatik.exceptions.InvalidNumberException;
 
 /**
- * The Complex number class.
+ * The Complex number class
  *
  * @author ugqws
  * @version 1.2

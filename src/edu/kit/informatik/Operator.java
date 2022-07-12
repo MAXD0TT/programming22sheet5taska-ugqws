@@ -3,7 +3,7 @@ package edu.kit.informatik;
 import edu.kit.informatik.exceptions.InvalidExpressionException;
 
 /**
- * The enum Operator.
+ * The enum Operator
  *
  * @author ugqws
  * @version 1.2

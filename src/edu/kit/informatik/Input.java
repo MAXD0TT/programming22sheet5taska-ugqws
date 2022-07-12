@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * The class Input for handling the In and Output of the expression evaluator
+ * The class Input for handling the In and Output of the expression evaluator.
  *
  * @author ugqws
  * @version 1.2

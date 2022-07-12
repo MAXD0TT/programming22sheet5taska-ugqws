@@ -78,7 +78,7 @@ public class ExpressionEvaluator {
         }
         //evaluate all remaining operators
         calculateRemaining();
-        //return the last remaining number, which is the solution
+        //return the last remaining number, which is the solution.
         return numbers.pop();
     }
 
